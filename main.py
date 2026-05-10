@@ -29,6 +29,16 @@ message = ""
 available_streams = []
 buttons = []
 
+def draw_text(surface, text, position, color=BLACK):
+    rendered_text = font.render(text, True, color)
+    surface.blit(rendered_text, position)
+
+# Function to get available streams
+def get_available_streams(url):
+    global available_streams, message, buttons
+
+     
+
 #Function draw_text(surface, text, position, color):
     #// Render and display text on the screen
     #RENDER text using font
