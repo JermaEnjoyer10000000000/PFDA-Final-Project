@@ -1,7 +1,20 @@
+import pygame
+from pytube import YouTube
 
-#Initialize Pygame
-#Set window size and title
-#Define colors, fonts, and UI elements (input box, buttons, messages)
+pygame.init()
+
+# Set window size and title
+WIDTH, HEIGHT = 800, 600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("YouTube Downloader")
+
+# Define colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GRAY = (200, 200, 200)
+BLUE = (100, 149, 237)
+GREEN = (50, 205, 50)
+RED = (255, 0, 0)
 
 #CREATE variables:
     #url_text = ""           // stores URL input by user
