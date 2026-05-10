@@ -63,6 +63,19 @@ def get_available_streams(url):
     except Exception as e:
         message = f"Error fetching streams: {e}"
 
+
+        # Function to download selected stream
+def download_stream(stream):
+    global message
+
+    try:
+        stream.download()
+        message = "Download Complete!"
+
+    except Exception as e:
+        message = f"Download failed: {e}"
+
+
 #Function download_stream(stream):
     #Try
         #Call stream.download()
