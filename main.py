@@ -138,6 +138,19 @@ while running:
     pygame.draw.rect(screen, BLUE, load_button)
     draw_text(screen, "Load Streams", (615, 108), WHITE)
 
+     # Draw stream buttons
+    for button in buttons:
+        pygame.draw.rect(screen, GREEN, button["rect"])
+        draw_text(
+            screen,
+            button["label"],
+            (button["rect"].x + 10, button["rect"].y + 8),
+            WHITE
+        )
+
+
+
+
             #If event is MOUSEBUTTONDOWN:
                 #If click inside input box:
                     #Set active_input = TRUE
