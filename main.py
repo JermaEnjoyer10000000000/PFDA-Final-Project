@@ -16,11 +16,18 @@ BLUE = (100, 149, 237)
 GREEN = (50, 205, 50)
 RED = (255, 0, 0)
 
-#CREATE variables:
-    #url_text = ""           // stores URL input by user
-    #active_input = FALSE    // tracks if input box is active
-    #message = ""            // status messages
-    #available_streams = []  // list of available formats/qualities
+# Fonts
+font = pygame.font.SysFont("Arial", 24)
+
+# UI Elements
+input_box = pygame.Rect(50, 50, 700, 40)
+
+# Variables
+url_text = ""
+active_input = False
+message = ""
+available_streams = []
+buttons = []
 
 #Function draw_text(surface, text, position, color):
     #// Render and display text on the screen
