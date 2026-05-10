@@ -63,8 +63,8 @@ def get_available_streams(url):
     except Exception as e:
         message = f"Error fetching streams: {e}"
     
-    def download_stream(stream):
-        global message
+def download_stream(stream):
+    global message
 
     try:
         stream.download()
@@ -106,7 +106,7 @@ while running:
                     if url_text.strip() == "":
                         message = "Please enter URL!"
                     else:
-                        download_stream(button["stream"])
+                            download_stream(button["stream"])
 
             # Load streams button
             load_button = pygame.Rect(600, 100, 150, 40)
@@ -148,38 +148,11 @@ while running:
             WHITE
         )
 
+ # Draw message
+    draw_text(screen, message, (50, 550), RED)
 
+    # Update display
+    pygame.display.update()
 
-
-            #If event is MOUSEBUTTONDOWN:
-                #If click inside input box:
-                    #Set active_input = TRUE
-                #Else:
-                    #Set active_input = FALSE
-                
-                #If click inside any download button:
-                    #If url_text is empty:
-                        #Set message = "Please enter URL!"
-                    #Else:
-                        #If available_streams is empty:
-                            #Call get_available_streams(url_text)
-                        #Call download_stream(selected stream)
-
-            #If event is KEYDOWN AND active_input is TRUE:
-                #If key is BACKSPACE:
-                    #Remove last character from url_text
-                #Else If key is RETURN:
-                    #Set active_input = FALSE
-                #Else:
-                    #Append key character to url_text
-
-        #Draw input box and url_text
-        #Draw download buttons for available_streams
-        #Draw message
-
-        #Update Pygame display
-
-#End Loop
-
-#Quit Pygame
-#End
+# Quit Pygame
+pygame.quit()
