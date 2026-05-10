@@ -37,7 +37,7 @@ def draw_text(surface, text, position, color=BLACK):
 def get_available_streams(url):
     global available_streams, message, buttons
 
-     try:
+    try:
         yt = YouTube(url)
         streams = yt.streams.filter(progressive=True)
 
@@ -62,11 +62,9 @@ def get_available_streams(url):
 
     except Exception as e:
         message = f"Error fetching streams: {e}"
-
-
-        # Function to download selected stream
-def download_stream(stream):
-    global message
+    
+    def download_stream(stream):
+        global message
 
     try:
         stream.download()
@@ -75,6 +73,17 @@ def download_stream(stream):
     except Exception as e:
         message = f"Download failed: {e}"
 
+
+    # Main loop
+running = True
+
+while running:
+    screen.fill(WHITE)
+
+    # Draw title
+    draw_text(screen, "YouTube Video Downloader", (50, 10), BLUE)
+
+    
 
 #Function download_stream(stream):
     #Try
