@@ -83,22 +83,52 @@ while running:
     # Draw title
     draw_text(screen, "YouTube Video Downloader", (50, 10), BLUE)
 
-    
+    # Event handling
+    for event in pygame.event.get():
 
-#Function download_stream(stream):
-    #Try
-        #Call stream.download()
-        #Set message = "Download Complete!"
-    #Catch Exception
-        #Set message = "Download failed"
+        # Quit event
+        if event.type == pygame.QUIT:
+            running = False
 
-#MAIN LOOP:
-    #While running:
-        #Fill screen with background color
+        # Mouse click event
+        if event.type == pygame.MOUSEBUTTONDOWN:
 
-        #For each event in Pygame events:
-            #If event is quit:
-                #Stop loop
+            # Input box click
+            if input_box.collidepoint(event.pos):
+                active_input = True
+            else:
+                active_input = False
+
+            # Check button clicks
+            for button in buttons:
+                if button["rect"].collidepoint(event.pos):
+
+                    if url_text.strip() == "":
+                        message = "Please enter URL!"
+                    else:
+                        download_stream(button["stream"])
+
+                    # Check button clicks
+            for button in buttons:
+                if button["rect"].collidepoint(event.pos):
+
+                    if url_text.strip() == "":
+                        message = "Please enter URL!"
+                    else:
+                        download_stream(button["stream"])
+
+            # Load streams button
+            load_button = pygame.Rect(600, 100, 150, 40)
+
+            if load_button.collidepoint(event.pos):
+                if url_text.strip() == "":
+                    message = "Please enter URL!"
+                else:
+                    get_available_streams(url_text)
+
+
+
+
 
             #If event is MOUSEBUTTONDOWN:
                 #If click inside input box:
