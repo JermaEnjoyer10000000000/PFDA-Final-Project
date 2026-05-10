@@ -129,6 +129,12 @@ while running:
             else:
                 url_text += event.unicode
 
+ # Draw input box
+    pygame.draw.rect(screen, GRAY, input_box, 2)
+    draw_text(screen, url_text, (input_box.x + 10, input_box.y + 5))
+
+
+
 
             #If event is MOUSEBUTTONDOWN:
                 #If click inside input box:
