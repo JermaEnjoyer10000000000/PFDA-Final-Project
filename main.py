@@ -108,15 +108,6 @@ while running:
                     else:
                         download_stream(button["stream"])
 
-                    # Check button clicks
-            for button in buttons:
-                if button["rect"].collidepoint(event.pos):
-
-                    if url_text.strip() == "":
-                        message = "Please enter URL!"
-                    else:
-                        download_stream(button["stream"])
-
             # Load streams button
             load_button = pygame.Rect(600, 100, 150, 40)
 
@@ -126,8 +117,17 @@ while running:
                 else:
                     get_available_streams(url_text)
 
+                     # Keyboard input
+        if event.type == pygame.KEYDOWN and active_input:
 
+            if event.key == pygame.K_BACKSPACE:
+                url_text = url_text[:-1]
 
+            elif event.key == pygame.K_RETURN:
+                active_input = False
+
+            else:
+                url_text += event.unicode
 
 
             #If event is MOUSEBUTTONDOWN:
