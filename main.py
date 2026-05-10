@@ -37,22 +37,31 @@ def draw_text(surface, text, position, color=BLACK):
 def get_available_streams(url):
     global available_streams, message, buttons
 
-     
+     try:
+        yt = YouTube(url)
+        streams = yt.streams.filter(progressive=True)
 
-#Function draw_text(surface, text, position, color):
-    #// Render and display text on the screen
-    #RENDER text using font
-    #Blit text to surface at position
+        available_streams = list(streams)
+        buttons = []
 
-#Function get_available_streams(url):
-    #Set Try and except
-    #Try
-        #yt = YouTube(url)
-        #streams = yt.streams
-        #Filter streams by type (video/audio) and resolution
-        #Store stream objects in available_streams list
-    #Catch Exception
-        #Set message = "Error fetching streams"
+        y_pos = 150
+
+        for i, stream in enumerate(available_streams):
+            label = f"{stream.resolution} - {stream.mime_type}"
+            button_rect = pygame.Rect(50, y_pos, 500, 40)
+
+            buttons.append({
+                "rect": button_rect,
+                "stream": stream,
+                "label": label
+            })
+
+            y_pos += 60
+
+        message = "Streams loaded successfully!"
+
+    except Exception as e:
+        message = f"Error fetching streams: {e}"
 
 #Function download_stream(stream):
     #Try
