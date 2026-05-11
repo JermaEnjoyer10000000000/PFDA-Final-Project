@@ -184,7 +184,7 @@ class VideoDownloadTool:
         # Video info
         self.video_title = ""
 
-        self.streams = []
+        self.video = []
 
 
     def draw_text(self, text, x, y, color=(0, 0, 0)):
@@ -261,9 +261,6 @@ class VideoDownloadTool:
                 # Merge final output into MP4
                 'merge_output_format': 'mp4',
 
-                # FFmpeg executable location
-                'ffmpeg_location': r'ffmpeg\bin\ffmpeg.exe',
-
                 # Show terminal progress
                 'quiet': False,
 
@@ -317,7 +314,7 @@ class VideoDownloadTool:
 
                     else:
 
-                        self.get_streams()
+                        self.get_videos()
 
                 # Download video
                 if self.download_button.clicked(event.pos):
@@ -387,7 +384,7 @@ class VideoDownloadTool:
         pygame.display.flip()
         
 
-    def main(self):
+    def run(self):
 
         while self.running:
 
