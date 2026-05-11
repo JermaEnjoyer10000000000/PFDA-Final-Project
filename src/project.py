@@ -292,6 +292,45 @@ class VideoDownloadTool:
                 f"Download Failed: {e}"
             )
 
+
+    def handle_events(self):
+
+        for event in pygame.event.get():
+
+            # Quit
+            if event.type == pygame.QUIT:
+
+                self.running = False
+
+            # Input handling
+            self.input_box.handle_event(event)
+
+            # Mouse clicks
+            if event.type == pygame.MOUSEBUTTONDOWN:
+
+                # Load video info
+                if self.load_button.clicked(event.pos):
+
+                    if self.input_box.text.strip() == "":
+
+                        self.message = "Please enter a YouTube URL!"
+
+                    else:
+
+                        self.get_streams()
+
+                # Download video
+                if self.download_button.clicked(event.pos):
+
+                    if self.input_box.text.strip() == "":
+
+                        self.message = "Please enter a YouTube URL!"
+
+                    else:
+
+                        self.download_video()
+        
+
     def main(self):
 
         while self.running:
