@@ -232,6 +232,66 @@ class VideoDownloadTool:
 
             self.message = f"Error: {e}"
 
+
+    def download_video(self):
+
+        try:
+
+            import os
+
+            # Create downloads folder
+            download_folder = "downloads"
+
+            if not os.path.exists(download_folder):
+                os.makedirs(download_folder)
+
+            self.message = "Downloading..."
+
+            ydl_opts = {
+
+                # Highest quality video + audio
+                'format': 'bestvideo+bestaudio/best',
+
+                # Save location
+                'outtmpl': os.path.join(
+                    download_folder,
+                    '%(title)s.%(ext)s'
+                ),
+
+                # Merge final output into MP4
+                'merge_output_format': 'mp4',
+
+                # FFmpeg executable location
+                'ffmpeg_location': r'ffmpeg\bin\ffmpeg.exe',
+
+                # Show terminal progress
+                'quiet': False,
+
+                # Better YouTube compatibility
+                'extractor_args': {
+                    'youtube': {
+                        'player_client': ['android']
+                    }
+                }
+            }
+
+            # Download video
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+
+                ydl.download(
+                    [self.input_box.text]
+                )
+
+            self.message = (
+                "Download Complete with Audio!"
+            )
+
+        except Exception as e:
+
+            self.message = (
+                f"Download Failed: {e}"
+            )
+
     def main(self):
 
         while self.running:
