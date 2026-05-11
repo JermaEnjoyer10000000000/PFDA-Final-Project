@@ -6,7 +6,6 @@ pygame.init()
 
 pygame.key.set_repeat(400, 50)
 
-
 class InputBox:
 
     def __init__(self, x, y, w, h):
@@ -129,3 +128,84 @@ class Button:
     def clicked(self, pos):
 
         return self.rect.collidepoint(pos)
+
+class VideoDownloadTool:
+
+    def __init__(self):
+
+        # Window setup
+        self.WIDTH = 900
+        self.HEIGHT = 600
+
+        self.screen = pygame.display.set_mode(
+            (self.WIDTH, self.HEIGHT)
+        )
+
+        pygame.display.set_caption(
+            "Video Downloader"
+        )
+
+        self.clock = pygame.time.Clock()
+
+        self.running = True
+
+        # Font
+        self.font = pygame.font.SysFont(
+            "Arial",
+            24
+        )
+
+        # Input box
+        self.input_box = InputBox(
+            50,
+            60,
+            800,
+            40
+        )
+
+        # Buttons
+        self.load_button = Button(
+            150,
+            140,
+            250,
+            50,
+            "Load Video Info",
+            (50, 205, 50)
+        )
+
+        self.download_button = Button(
+            500,
+            140,
+            250,
+            50,
+            "Download Video",
+            (100, 149, 237)
+        )
+
+        # Status message
+        self.message = ""
+
+        # Video info
+        self.video_title = ""
+
+        self.streams = []
+
+
+
+    def main(self):
+
+        while self.running:
+
+            self.handle_events()
+
+            self.draw()
+
+            self.clock.tick(60)
+
+        pygame.quit()
+
+if __name__ == "__main__":
+
+    tool = VideoDownloadTool()
+
+    tool.run()
