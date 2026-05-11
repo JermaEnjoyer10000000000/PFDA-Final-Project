@@ -89,10 +89,6 @@ class InputBox:
             2
         )
 
-
-# ---------------------------------------------------
-# Button Class
-# ---------------------------------------------------
 class Button:
 
     def __init__(self, x, y, w, h, text, color):
@@ -191,6 +187,50 @@ class VideoDownloadTool:
         self.streams = []
 
 
+    def draw_text(self, text, x, y, color=(0, 0, 0)):
+
+        rendered_text = self.font.render(
+            text,
+            True,
+            color
+        )
+
+        self.screen.blit(
+            rendered_text,
+            (x, y)
+        )
+
+    def get_videos(self):
+
+        try:
+
+            ydl_opts = {
+                'quiet': True,
+                'skip_download': True
+            }
+
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+
+                info = ydl.extract_info(
+                    self.input_box.text,
+                    download=False
+                )
+
+                self.video_title = info.get(
+                    "title",
+                    "Unknown Title"
+                )
+
+                self.videos = info.get(
+                    "formats",
+                    []
+                )
+
+                self.message = "Video Loaded Successfully!"
+
+        except Exception as e:
+
+            self.message = f"Error: {e}"
 
     def main(self):
 
