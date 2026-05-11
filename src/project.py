@@ -329,6 +329,62 @@ class VideoDownloadTool:
                     else:
 
                         self.download_video()
+
+
+    def draw(self):
+
+        self.screen.fill((255, 255, 255))
+
+        # Title
+        self.draw_text(
+            "YouTube Video Downloader",
+            50,
+            10,
+            (100, 149, 237)
+        )
+
+        # Input label
+        self.draw_text(
+            "Enter YouTube URL:",
+            50,
+            35
+        )
+
+        # Input box
+        self.input_box.draw(self.screen)
+
+        # Buttons
+        self.load_button.draw(self.screen)
+
+        self.download_button.draw(self.screen)
+
+        # Video title
+        if self.video_title != "":
+
+            self.draw_text(
+                f"Title: {self.video_title}",
+                50,
+                250,
+                (0, 100, 0)
+            )
+
+        # Status message
+        self.draw_text(
+            self.message,
+            50,
+            320,
+            (255, 0, 0)
+        )
+
+        # Instructions
+        self.draw_text(
+            "Tip: Use CTRL + V to paste URLs",
+            50,
+            500,
+            (100, 100, 100)
+        )
+
+        pygame.display.flip()
         
 
     def main(self):
