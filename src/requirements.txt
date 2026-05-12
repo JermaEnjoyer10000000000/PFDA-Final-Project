@@ -1,0 +1,5 @@
+#Required Libraries:
+
+#Pygame
+#Pyperclip
+#yt-dlp
