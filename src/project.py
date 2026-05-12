@@ -280,7 +280,7 @@ class VideoDownloadTool:
                 )
 
             self.message = (
-                "Download Complete!"
+                "Download Complete with Audio!"
             )
 
         except Exception as e:
