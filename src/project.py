@@ -398,6 +398,6 @@ class VideoDownloadTool:
 
 if __name__ == "__main__":
 
-    tool = VideoDownloadTool()
+    main = VideoDownloadTool()
 
-    tool.run()
+    main.run()
